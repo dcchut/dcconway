@@ -1,11 +1,11 @@
 [package]
 name = "dcconway"
-version = "0.1.1"
+version = "0.1.2+dev"
 authors = ["Robert Usher <266585+dcchut@users.noreply.github.com>"]
 edition = "2018"
 description = "An implementation of Conway's Game of Life"
 readme = "README.md"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/dcchut/conway"
+repository = "https://github.com/dcchut/dcconway"
 
 [dependencies]
