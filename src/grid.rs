@@ -28,8 +28,21 @@ impl GridPosition {
 }
 
 macro_rules! impl_into_grid_position {
+    ( $tuple_ty: ty) => {
+        impl Into<GridPosition> for ($tuple_ty, $tuple_ty) {
+            fn into(self) -> GridPosition {
+                GridPosition::new(self.0 as i64, self.1 as i64)
+            }
+        }
+    };
     ( $tuple_ty_1: ty, $tuple_ty_2: ty) => {
         impl Into<GridPosition> for ($tuple_ty_1, $tuple_ty_2) {
+            fn into(self) -> GridPosition {
+                GridPosition::new(self.0 as i64, self.1 as i64)
+            }
+        }
+
+        impl Into<GridPosition> for ($tuple_ty_2, $tuple_ty_1) {
             fn into(self) -> GridPosition {
                 GridPosition::new(self.0 as i64, self.1 as i64)
             }
@@ -38,12 +51,10 @@ macro_rules! impl_into_grid_position {
 }
 
 // TODO: expand this as required
-impl_into_grid_position!(i64, i64);
-impl_into_grid_position!(usize, i64);
+impl_into_grid_position!(i64);
 impl_into_grid_position!(i64, usize);
 impl_into_grid_position!(i64, i32);
-impl_into_grid_position!(i32, i64);
-impl_into_grid_position!(i32, i32);
+impl_into_grid_position!(i32);
 
 #[derive(Clone, Debug)]
 pub struct Grid {
