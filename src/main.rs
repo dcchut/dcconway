@@ -1,6 +1,6 @@
-use conway::grid::Grid;
-use conway::renderer::{Renderer, TextRenderer};
-use conway::rules::{BasicRuleSet, Ticker};
+use dcconway::grid::Grid;
+use dcconway::renderer::{Renderer, TextRenderer};
+use dcconway::rules::{BasicRuleSet, Ticker};
 
 /// Creates a grid containing a line of alive cells.  The total length of the line is 2 * `span` + 1.
 fn line(span: usize) -> Grid {
