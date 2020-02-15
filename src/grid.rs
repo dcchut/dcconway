@@ -88,18 +88,30 @@ impl Grid {
     }
 
     #[inline(always)]
-    pub fn is_live(&self, pos: GridPosition) -> bool {
+    pub fn _is_live(&self, pos: GridPosition) -> bool {
         self.alive_states.contains(&pos)
     }
 
-    #[inline(always)]
-    pub fn is_dead(&self, pos: GridPosition) -> bool {
-        !self.is_live(pos)
+    pub fn is_live<P: Into<GridPosition>>(&self, into_pos: P) -> bool {
+        self._is_live(into_pos.into())
     }
 
     #[inline(always)]
-    pub fn neighbour_count(&self, pos: GridPosition) -> usize {
+    pub fn _is_dead(&self, pos: GridPosition) -> bool {
+        !self.is_live(pos)
+    }
+
+    pub fn is_dead<P: Into<GridPosition>>(&self, into_pos: P) -> bool {
+        self._is_dead(into_pos.into())
+    }
+
+    #[inline(always)]
+    pub fn _neighbour_count(&self, pos: GridPosition) -> usize {
         *self.neighbour_count.get(&pos).unwrap_or(&0)
+    }
+
+    pub fn neighbour_count<P: Into<GridPosition>>(&self, into_pos: P) -> usize {
+        self._neighbour_count(into_pos.into())
     }
 
     #[inline(always)]

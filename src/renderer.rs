@@ -1,4 +1,4 @@
-use crate::grid::{Grid, GridPosition};
+use crate::grid::Grid;
 
 pub trait Renderer {
     type Output;
@@ -41,9 +41,7 @@ impl Renderer for TextRenderer {
     fn render(&self, grid: &Grid) -> Self::Output {
         for y in self.ymin..=(self.ymin + self.height) {
             for x in self.xmin..=(self.xmin + self.width) {
-                let pos = GridPosition::new(x, y);
-
-                print!("{}", if grid.is_live(pos) { "#" } else { "-" });
+                print!("{}", if grid.is_live((x, y)) { "#" } else { "-" });
             }
             println!();
         }
