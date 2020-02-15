@@ -15,7 +15,7 @@ fn line(span: usize) -> Grid {
 }
 
 fn main() {
-    let mut renderer = BufferedTextRenderer::square(3);
+    let mut renderer = BufferedTextRenderer::square(3, Some(100));
 
     let mut grid = line(2);
     renderer.render(&grid);
