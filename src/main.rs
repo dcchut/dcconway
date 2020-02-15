@@ -1,5 +1,5 @@
 use dcconway::grid::Grid;
-use dcconway::renderer::{Renderer, TextRenderer};
+use dcconway::renderer::{BufferedTextRenderer, Renderer};
 use dcconway::rules::{BasicRuleSet, Ticker};
 
 /// Creates a grid containing a line of alive cells.  The total length of the line is 2 * `span` + 1.
@@ -15,13 +15,16 @@ fn line(span: usize) -> Grid {
 }
 
 fn main() {
-    let renderer = TextRenderer::square(3);
+    let mut renderer = BufferedTextRenderer::square(3);
 
-    let mut grid = line(3);
+    let mut grid = line(2);
     renderer.render(&grid);
 
-    for _ in 0..5 {
+    for _ in 0..25 {
         grid = BasicRuleSet::tick(&grid);
         renderer.render(&grid);
     }
+
+    // flush out anything remaining in the buffer
+    renderer.flush();
 }
