@@ -102,7 +102,7 @@ impl Renderer for BufferedTextRenderer {
             let y = self.ymin + dy as i64;
             if self.count > 0 {
                 // add a tab to every line
-                self.lines[dy].push_str("\t");
+                self.lines[dy].push('\t');
             }
             for dx in 0..=self.width {
                 let x = self.xmin + dx as i64;

@@ -1,7 +1,6 @@
 # dcconway
 
-[![Build Status](https://travis-ci.org/dcchut/dcconway.svg?branch=master)](https://travis-ci.org/dcchut/dcconway)
-[![codecov](https://codecov.io/gh/dcchut/dcconway/branch/master/graph/badge.svg)](https://codecov.io/gh/dcchut/dcconway)
+![Build Status](https://github.com/dcchut/dcconway/workflows/Push%20action/badge.svg?branch=master)
 
 An implementation of Conway's Game of Life.
 
