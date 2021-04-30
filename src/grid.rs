@@ -30,14 +30,14 @@ impl GridPosition {
 macro_rules! impl_from_grid_position {
     ( $tuple_ty: ty) => {
         impl From<($tuple_ty, $tuple_ty)> for GridPosition {
-            fn into(x: ($tuple_ty, $tuple_ty)) -> Self {
+            fn from(x: ($tuple_ty, $tuple_ty)) -> Self {
                 GridPosition::new(x.0 as i64, x.1 as i64)
             }
         }
     };
     ( $tuple_ty_1: ty, $tuple_ty_2: ty) => {
         impl From<($tuple_ty_1, $tuple_ty_2)> for GridPosition  {
-            fn into(x: ($tuple_ty_1, $tuple_ty_2)) -> Self {
+            fn from(x: ($tuple_ty_1, $tuple_ty_2)) -> Self {
                 GridPosition::new(x.0 as i64, x.1 as i64)
             }
         }
