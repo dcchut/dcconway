@@ -27,34 +27,34 @@ impl GridPosition {
     }
 }
 
-macro_rules! impl_into_grid_position {
+macro_rules! impl_from_grid_position {
     ( $tuple_ty: ty) => {
-        impl Into<GridPosition> for ($tuple_ty, $tuple_ty) {
-            fn into(self) -> GridPosition {
-                GridPosition::new(self.0 as i64, self.1 as i64)
+        impl From<($tuple_ty, $tuple_ty)> for GridPosition {
+            fn into(x: ($tuple_ty, $tuple_ty)) -> Self {
+                GridPosition::new(x.0 as i64, x.1 as i64)
             }
         }
     };
     ( $tuple_ty_1: ty, $tuple_ty_2: ty) => {
-        impl Into<GridPosition> for ($tuple_ty_1, $tuple_ty_2) {
-            fn into(self) -> GridPosition {
-                GridPosition::new(self.0 as i64, self.1 as i64)
+        impl From<($tuple_ty_1, $tuple_ty_2)> for GridPosition  {
+            fn into(x: ($tuple_ty_1, $tuple_ty_2)) -> Self {
+                GridPosition::new(x.0 as i64, x.1 as i64)
             }
         }
 
-        impl Into<GridPosition> for ($tuple_ty_2, $tuple_ty_1) {
-            fn into(self) -> GridPosition {
-                GridPosition::new(self.0 as i64, self.1 as i64)
+        impl From<($tuple_ty_2, $tuple_ty_1)> for GridPosition {
+            fn from(x: ($tuple_ty_2, $tuple_ty_1)) -> Self {
+                GridPosition::new(x.0 as i64, x.1 as i64)
             }
         }
     };
 }
 
 // TODO: expand this as required
-impl_into_grid_position!(i64);
-impl_into_grid_position!(i64, usize);
-impl_into_grid_position!(i64, i32);
-impl_into_grid_position!(i32);
+impl_from_grid_position!(i64);
+impl_from_grid_position!(i64, usize);
+impl_from_grid_position!(i64, i32);
+impl_from_grid_position!(i32);
 
 #[derive(Clone, Debug)]
 pub struct Grid {
